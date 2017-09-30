@@ -1,4 +1,4 @@
-document.write('// EV3 ScratchX Plugin
+// EV3 ScratchX Plugin
 // Copyright 2015 Ken Aspeslagh @massivevector
 // Only tested on Mac. On Mac, ev3 brick must be named starting with "serial" if the plugin is to recognize it.
 // Rename the brick before pairing it with the Mac or else the name gets cached and the serial port will have the old name
@@ -135,31 +135,31 @@ var lastCommandWeWereTrying = null;
 
 function startupBatteryCheckCallback(result)
 {
-    console_log(timeStamp() + ": got battery level at connect: " + result);
+    //console_log(timeStamp() + ": got battery level at connect: " + result);
     
     weConnected();
     
-    playStartUpTones();
+   // playStartUpTones();
     
-    if (result < 11 && !warnedAboutBattery)
-    {
-        batteryAlert();
-        warnedAboutBattery = true;
-    }
+   // if (result < 11 && !warnedAboutBattery)
+   // {
+  //      batteryAlert();
+  //      warnedAboutBattery = true;
+  //  }
     
     clearScreen();
 
-    uploadAndDrawCatFile();
+    //uploadAndDrawCatFile();
     
-    scanPorts();
+//scanPorts();
     
-    setupWatchdog();
+   // setupWatchdog();
     
-    if (lastCommandWeWereTrying)
-    {
-        waitingQueries.push(lastCommandWeWereTrying);
-        executeQueryQueue();
-    }
+   // if (lastCommandWeWereTrying)
+   // {
+   //     waitingQueries.push(lastCommandWeWereTrying);
+   //     executeQueryQueue();
+    //}
 }
 
 function setupWatchdog()
@@ -1511,4 +1511,4 @@ function(ext)
      console_log("EV3ScratchAlreadyLoaded: " + EV3ScratchAlreadyLoaded);
      EV3ScratchAlreadyLoaded = true;
 })({});
-');
+
