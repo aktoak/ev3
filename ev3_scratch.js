@@ -1,4 +1,3 @@
-document.write('
 // EV3 ScratchX Plugin
 // Copyright 2015 Ken Aspeslagh @massivevector
 // Only tested on Mac. On Mac, ev3 brick must be named starting with "serial" if the plugin is to recognize it.
@@ -1512,4 +1511,3 @@ function(ext)
      console_log("EV3ScratchAlreadyLoaded: " + EV3ScratchAlreadyLoaded);
      EV3ScratchAlreadyLoaded = true;
 })({});
-');
