@@ -2,7 +2,42 @@
 <html>
 
 <body>
-hello world, this is test
+<script type="text/javascript">
+    function WebSocketTest()
+    {
+        if ("WebSocket" in window)
+        {
+            alert("WebSocket is supported by your Browser!");
+
+            // Let us open a web socket
+            var ws = new WebSocket("ws://192.168.1.4:6190");
+
+            ws.onopen = function()
+            {
+                ws.send("Message to send");
+                alert("Message is sent...");
+            };
+
+            ws.onmessage = function (evt)
+            {
+                var received_msg = evt.data;
+                alert("Message is received...");
+            };
+
+            ws.onclose = function()
+            {
+                // websocket is closed.
+                alert("Connection is closed...");
+            };
+        }
+
+        else
+        {
+            // The browser doesn't support WebSocket
+            alert("WebSocket NOT supported by your Browser!");
+        }
+    }
+</script>
 </body>
 
 </html>
