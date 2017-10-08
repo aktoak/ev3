@@ -12,7 +12,7 @@
 	
 	
 	ext.cnct = function () {
-        if(debugLevel)
+        //if(debugLevel)
             console.log('Connecting to Server');
         window.socket = new WebSocket("ws://localhost:5001");
         window.socket.onopen = function () {
@@ -20,7 +20,7 @@
                 "command": "ready"
             });
             window.socket.send(msg);
-            if(debugLevel)
+           // if(debugLevel)
                 console.log("Connected!");
             myStatus = 2;
             myMsg = 'ready';
@@ -44,8 +44,11 @@
     var descriptor = {
         blocks: [
 		 // Block type, block name, function name
-            [' ', 'Connect to websocket', 'connect'],
-        ]
+            [' ', 'Connect to websocket', 'cnct'],
+        ],
+		menus: {
+			     state: ['On', 'Off'],
+			   }
     };
 
     // Register the extension
