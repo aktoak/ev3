@@ -1,37 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSockets</title>
+</head>
 <body>
-<script type="text/javascript">
-        if ("WebSocket" in window)
-        {
-            alert("WebSocket is supported by your Browser!");
-            // Let us open a web socket
-            var ws = new WebSocket("ws://localhost:5001");
-
-            ws.onopen = function()
-            {
-                ws.send("hello from the above");
-                alert("Message is sent...");
-            };
-
-            ws.onmessage = function (evt)
-            {
-                var received_msg = evt.data;
-                alert("Message is received..."+received_msg);
-            };
-
-            ws.onclose = function()
-            {
-                // websocket is closed.
-                alert("Connection is closed...");
-            };
-        }
-
-        else
-        {
-            // The browser doesn't support WebSocket
-            alert("WebSocket NOT supported by your Browser!");
-        }
+<script>
+	
+		var sock = new WebSockets("ws://localhost:5001");
+		sock.onopen = function(event){
+		alert('Sockt connected Successfully');
+		setTimeout(function(){
+			sock.send("Hey There");
+			},1000);
+		};
+		sock.onmessage = function(event){
+		console.log(event);
+		}
+	
 </script>
 </body>
 
