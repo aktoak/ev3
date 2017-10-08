@@ -5,7 +5,7 @@
         if ("WebSocket" in window)
         {
             alert("WebSocket is supported by your Browser!");
-			url ="wss://0.0.0.0:8080/echo";
+			url ="ws://localhost:8081/echo";
             // Let us open a web socket
             var ws = new WebSocket(url);
 
