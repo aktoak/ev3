@@ -10,14 +10,14 @@
 
             ws.onopen = function()
             {
-                ws.send("Message to send");
+                ws.send("hello from the above");
                 alert("Message is sent...");
             };
 
             ws.onmessage = function (evt)
             {
                 var received_msg = evt.data;
-                alert("Message is received...");
+                alert("Message is received..."+received_msg);
             };
 
             ws.onclose = function()
