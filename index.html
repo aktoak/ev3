@@ -7,7 +7,7 @@
 <body>
 <script>
 	
-		var sock = new WebSockets("ws://localhost:5001");
+		var sock = new WebSocket("ws://localhost:5001");
 		sock.onopen = function(event){
 		alert('Sockt connected Successfully');
 		setTimeout(function(){
