@@ -55,7 +55,7 @@
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
     ext._getStatus = function() {
-        return {status: myStatus, msg: 'myMsg'};
+        return {status: myStatus, msg: myMsg};
     };
 
     // Block and block menu descriptions
