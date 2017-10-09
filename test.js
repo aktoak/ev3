@@ -12,15 +12,15 @@
 	
 	
 	ext.cnct = function () {
-        if(debugLevel)
+        //if(debugLevel)
             console.log('Connecting to Server');
-        window.socket = new WebSocket("ws://127.0.0.1:9000");
+        window.socket = new WebSocket("ws://localhost:5001");
         window.socket.onopen = function () {
             var msg = JSON.stringify({
                 "command": "ready"
             });
             window.socket.send(msg);
-            if(debugLevel)
+            //if(debugLevel)
                 console.log("Connected!");
             myStatus = 2;
             myMsg = 'ready';
