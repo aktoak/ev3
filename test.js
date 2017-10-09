@@ -29,6 +29,18 @@
             myMsg = 'ready';
             connected = true;
         };
+		
+		 window.socket.onmessage = function (message) {
+		 };
+		 
+		 //noinspection JSUnusedLocalSymbols
+        window.socket.onclose = function (e) {
+            console.log("Connection closed.");
+            socket = null;
+            connected = false;
+            myStatus = 1;
+            myMsg = 'not_ready'
+        };
 	}
 		
 		
