@@ -1,3 +1,6 @@
+/**
+ * Created by asharafk on 10/9/17.
+ */
 (function(ext) {
 	
 	var debugLevel = 0;
@@ -26,6 +29,7 @@
             myMsg = 'ready';
             connected = true;
         };
+	}
 		
 		
 	
