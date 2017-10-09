@@ -11,7 +11,7 @@
     var myMsg = 'not_ready';
 	
 	
-	ext.connect = function () {
+	ext.cnct = function () {
         if(debugLevel)
             console.log('Connecting to Server');
         window.socket = new WebSocket("ws://127.0.0.1:9000");
@@ -42,7 +42,7 @@
     var descriptor = {
         blocks: [
 		 // Block type, block name, function name
-            [' ', 'Connect to websocket', 'connect'],
+            [' ', 'Connect to websocket', 'cnct'],
         ]
     };
 
