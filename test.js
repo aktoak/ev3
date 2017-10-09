@@ -42,11 +42,31 @@
             myMsg = 'not_ready'
         };
 	}
+	
+	
+	ext.playTone = function (msg) {
+        if (connected == false) {
+            alert("Server Not Connected");
+        }
+        else {
+            var msg = JSON.stringify({
+                "command": 'sending msg', 'Message': msg
+            });
+           // if (debugLevel)
+                console.log(msg);
+            window.socket.send(msg);
+        }
+    };
 		
 		
 	
     // Cleanup function when the extension is unloaded
-    ext._shutdown = function() {};
+    ext._shutdown = function() {
+		 var msg = JSON.stringify({
+            "command": "shutdown"
+        });
+        window.socket.send(msg);
+	};
 	
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
@@ -59,6 +79,8 @@
         blocks: [
 		 // Block type, block name, function name
             [' ', 'Connect to websocket', 'connectwb'],
+			[' ', 'send Message  %n', 'playTone', 'hi'],
+
         ],
     };
 
