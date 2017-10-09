@@ -46,10 +46,7 @@
 	
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {
-		 var msg = JSON.stringify({
-            "connection was shut down"
-        });
-        window.socket.send(msg);
+		
 	};
 
     // Status reporting code
@@ -63,7 +60,7 @@
         blocks: [
 		 // Block type, block name, function name
             [' ', 'Connect to websocket', 'connect'],
-        ]
+        ],
 		
     };
 
