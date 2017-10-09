@@ -11,62 +11,39 @@
     var myMsg = 'not_ready';
 	
 	
-	ext.cnct = function () {
-        //if(debugLevel)
+	ext.connect = function () {
+        if(debugLevel)
             console.log('Connecting to Server');
-        window.socket = new WebSocket("ws://localhost:5001");
+        window.socket = new WebSocket("ws://127.0.0.1:9000");
         window.socket.onopen = function () {
             var msg = JSON.stringify({
-                "connection is successfull"
+                "command": "ready"
             });
             window.socket.send(msg);
-           // if(debugLevel)
+            if(debugLevel)
                 console.log("Connected!");
-            myStatus = 2;//ready
+            myStatus = 2;
             myMsg = 'ready';
             connected = true;
         };
 		
 		
-		 window.socket.onmessage = function (message) {
-		 };
-		 
-		 //noinspection JSUnusedLocalSymbols
-		 window.socket.onclose = function (e) {
-            console.log("Connection closed.");
-            socket = null;
-            connected = false;
-            myStatus = 1;
-            myMsg = 'not_ready'
-        };
-		
-	}
-		
-		
 	
     // Cleanup function when the extension is unloaded
-    ext._shutdown = function() {
-		 var msg = JSON.stringify({
-            "connection was shut down"
-        });
-        window.socket.send(msg);
-	};
+    ext._shutdown = function() {};
 
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
     ext._getStatus = function() {
-        return {status: 2, msg: 'ready'};
+        return {status: 2, msg: 'Ready'};
     };
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
 		 // Block type, block name, function name
-            [' ', 'Connect to websocket', 'cnct'],
-        ],
-		menus: {
-			     state: ['On', 'Off'],
-			   }
+            [' ', 'Connect to websocket', 'connect'],
+        ]
     };
 
     // Register the extension
