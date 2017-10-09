@@ -11,20 +11,33 @@
     var myMsg = 'not_ready';
 	
 	
-	ext.cnct = function () {
+	ext.connect = function () {
         //if(debugLevel)
             console.log('Connecting to Server');
         window.socket = new WebSocket("ws://localhost:5001");
         window.socket.onopen = function () {
             var msg = JSON.stringify({
-                "command": "ready"
+                "connection is successfull"
             });
             window.socket.send(msg);
            // if(debugLevel)
                 console.log("Connected!");
-            myStatus = 2;
+            myStatus = 2;//ready
             myMsg = 'ready';
             connected = true;
+        };
+		
+		
+		 window.socket.onmessage = function (message) {
+		 };
+		 
+		 //noinspection JSUnusedLocalSymbols
+		 window.socket.onclose = function (e) {
+            console.log("Connection closed.");
+            socket = null;
+            connected = false;
+            myStatus = 1;
+            myMsg = 'not_ready'
         };
 		
 	}
@@ -32,19 +45,24 @@
 		
 	
     // Cleanup function when the extension is unloaded
-    ext._shutdown = function() {};
+    ext._shutdown = function() {
+		 var msg = JSON.stringify({
+            "connection was shut down"
+        });
+        window.socket.send(msg);
+	};
 
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
     ext._getStatus = function() {
-        return {status: 2, msg: 'Ready'};
+        return {status: myStatus, msg: 'myMsg'};
     };
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
 		 // Block type, block name, function name
-            [' ', 'Connect to websocket', 'cnct'],
+            [' ', 'Connect to websocket', 'connect'],
         ],
 		menus: {
 			     state: ['On', 'Off'],
