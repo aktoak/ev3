@@ -14,7 +14,7 @@
     var myMsg = 'not_ready';
 	
 	
-	ext.connectwb = function () {
+	ext.wb = function () {
         //if(debugLevel)
             console.log('Connecting to Server');
         window.socket = new WebSocket("ws://localhost:5001");
@@ -46,7 +46,7 @@
     var descriptor = {
         blocks: [
 		 // Block type, block name, function name
-            [' ', 'Connect to websocket', 'connectwb'],
+            [' ', 'Connect to websocket', 'wb'],
         ],
     };
 
