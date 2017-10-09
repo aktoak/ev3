@@ -14,13 +14,13 @@
     var myMsg = 'not_ready';
 	
 	
-	ext.cnct = function () {
+	ext.connectwb = function () {
         //if(debugLevel)
             console.log('Connecting to Server');
         window.socket = new WebSocket("ws://localhost:5001");
         window.socket.onopen = function () {
             var msg = JSON.stringify({
-                "connected succesfully"
+                "command": "ready"
             });
             window.socket.send(msg);
             //if(debugLevel)
@@ -46,7 +46,7 @@
     var descriptor = {
         blocks: [
 		 // Block type, block name, function name
-            [' ', 'Connect to websocket', 'cnct'],
+            [' ', 'Connect to websocket', 'connectwb'],
         ],
     };
 
