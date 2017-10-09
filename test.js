@@ -63,10 +63,8 @@
         blocks: [
 		 // Block type, block name, function name
             [' ', 'Connect to websocket', 'connect'],
-        ],
-		menus: {
-			     state: ['On', 'Off'],
-			   }
+        ]
+		
     };
 
     // Register the extension
