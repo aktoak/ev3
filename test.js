@@ -44,7 +44,7 @@
 	}
 	
 	
-	ext.playTone = function (msg) {
+	ext.sendMsg = function (msg) {
         if (connected == false) {
             alert("Server Not Connected");
         }
@@ -79,7 +79,7 @@
         blocks: [
 		 // Block type, block name, function name
             [' ', 'Connect to websocket', 'connectwb'],
-			[' ', 'send Message  %n', 'playTone', 'hi'],
+			[' ', 'send Message  %s', 'sendMsg', 'hi'],
 
         ],
     };
